@@ -8,6 +8,10 @@ __pycache__/
 
 experiments/*.csv
 
+data
+metrics
+models
+
 # Distribution / packaging
 .Python
 build/
