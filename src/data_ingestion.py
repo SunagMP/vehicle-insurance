@@ -1,8 +1,7 @@
 import pandas as pd
 from pymongo import MongoClient
-from logger_file import create_logger
+from utils import create_logger
 import os
-from sklearn.model_selection import train_test_split
 
 #------------ getting logger ---------------
 logger = create_logger("data_ingestion_loger")

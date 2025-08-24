@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import os
-from logger_file import create_logger
+from utils import create_logger, load_all_params
 
 #--------- creating the logger instance
 logger = create_logger(name="data_preprocessing_logger")
@@ -34,7 +34,9 @@ def main():
     try :
         df = pd.read_csv('data/raw/raw_data.csv')
 
-        test_size = 0.2
+        test_param = load_all_params("data_preprocessing")
+        test_size = test_param['test_size']
+        
         train_data, test_data = split_the_data(df, test_size)
         save_the_train_test_data(train_data, "train_data")
         save_the_train_test_data(test_data, "test_data")

@@ -12,7 +12,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import PowerTransformer
 
-from logger_file import create_logger
+from utils import create_logger, load_all_params
 
 #-------- logger instance
 logger = create_logger("train_evaluate_model_logger")
@@ -93,8 +93,11 @@ def evaluate_model(x_test:pd.DataFrame, y_test:pd.DataFrame):
 
 def main():
     try:
-        n_estimators = 100
-        max_depth = None
+        test_params = load_all_params("train_evaluate_model")
+        n_estimators = test_params['n_estimators']
+        max_depth = test_params['max_depth']
+        if max_depth == 'None':
+            max_depth = None
         pipe = create_model(n_estimators, max_depth)
 
         print("model-created")

@@ -1,5 +1,6 @@
 import logging
 import os
+import yaml
 
 def create_logger(name:str):
     logger = logging.getLogger(name)
@@ -23,3 +24,8 @@ def create_logger(name:str):
     logger.addHandler(console_handler)
 
     return logger
+
+def load_all_params(component:str):
+    with open('params.yaml', 'r') as f:
+        all_params = yaml.safe_load(f)
+    return all_params[component]

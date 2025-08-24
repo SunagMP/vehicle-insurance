@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-from logger_file import create_logger
+from utils import create_logger
 
 #------------ create logging instance
 logger = create_logger("feature_engineering_logger")
