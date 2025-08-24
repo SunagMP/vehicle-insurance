@@ -1,0 +1,76 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data_ingestion.py
+    deps:
+    - path: experiments/data_to_mongodb.py
+      hash: md5
+      md5: 5cf98bdda1dab743b2368145c3a49b26
+      size: 752
+    - path: src/data_ingestion.py
+      hash: md5
+      md5: 418df7f9215d8bf76ed9d7988a169da5
+      size: 1698
+    outs:
+    - path: data/raw
+      hash: md5
+      md5: d43f63609dc9e2f135ec9ceca9e5f367.dir
+      size: 21813467
+      nfiles: 1
+  data_preprocessing:
+    cmd: python src/data_preprocessing.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: d43f63609dc9e2f135ec9ceca9e5f367.dir
+      size: 21813467
+      nfiles: 1
+    - path: src/data_preprocessing.py
+      hash: md5
+      md5: 47848b3226d7969047639dceeba8954f
+      size: 2668
+    outs:
+    - path: data/split
+      hash: md5
+      md5: bd27904cfe3fda21b5400267632d5abd.dir
+      size: 21813609
+      nfiles: 2
+  feature_engineering:
+    cmd: python src/feature_engineering.py
+    deps:
+    - path: data/split
+      hash: md5
+      md5: bd27904cfe3fda21b5400267632d5abd.dir
+      size: 21813609
+      nfiles: 2
+    - path: src/feature_engineering.py
+      hash: md5
+      md5: ff906ce41ca1cec1d4b3bd2b211ba1b3
+      size: 2392
+    outs:
+    - path: data/cleaned
+      hash: md5
+      md5: 1c0126fdcda64a427dbc5aa7fd259b54.dir
+      size: 19578064
+      nfiles: 2
+  train_evaluate_model:
+    cmd: python src/train_evaluate_model.py
+    deps:
+    - path: data/cleaned
+      hash: md5
+      md5: 1c0126fdcda64a427dbc5aa7fd259b54.dir
+      size: 19578064
+      nfiles: 2
+    - path: src/train_evaluate_model.py
+      hash: md5
+      md5: 3383b19e5deee60843eb2073c1e9b6e4
+      size: 3714
+    outs:
+    - path: metrics/result.json
+      hash: md5
+      md5: 23ac1f2a4a79e9905b01bc779ec54bfd
+      size: 114
+    - path: models/model.pkl
+      hash: md5
+      md5: b86be9a4d38392878ac0c16518fdb182
+      size: 638059494
