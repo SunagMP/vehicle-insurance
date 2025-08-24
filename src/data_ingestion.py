@@ -15,7 +15,7 @@ def establish_mongo_connection():
         logger.debug("MongoDb Connection established successfully")
         return collection
     except Exception as e:
-        logger.error("Couldn't establish the connection due to -> ",)
+        logger.error(f"Couldn't establish the connection due to -> {e}")
 
 def get_data_from_mongo(collection):
     try:
@@ -27,7 +27,7 @@ def get_data_from_mongo(collection):
         logger.debug("Data gathered as dataframe successfully")
         return df
     except Exception as e:
-        logger.error("Failed to get data due to , ", e)
+        logger.error(f"Failed to get data due to , {e}")
 
 def save_the_data(df:pd.DataFrame):
     try:
@@ -37,7 +37,7 @@ def save_the_data(df:pd.DataFrame):
         df.to_csv('data/raw/raw_data.csv', index=False)
         logger.debug("Data saved to project directory")
     except Exception as e:
-        logger.error("Failed to save the raw data ,", e)
+        logger.error(f"Failed to save the raw data , {e}")
 
 def main():
     try:
@@ -46,7 +46,7 @@ def main():
         save_the_data(df)
 
     except Exception as e:
-        logger.error("Data ingestion failed due to , ", e)
+        logger.error(f"Data ingestion failed due to , {e}")
 
 if __name__ == '__main__':
     main()

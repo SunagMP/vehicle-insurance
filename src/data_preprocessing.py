@@ -6,39 +6,6 @@ from logger_file import create_logger
 #--------- creating the logger instance
 logger = create_logger(name="data_preprocessing_logger")
 
-"""  
- 4   Region_Code           381109 non-null  float64
- 5   Previously_Insured    381109 non-null  int64  
- 6   Vehicle_Age           381109 non-null  object 
- 7   Vehicle_Damage        381109 non-null  object 
- 8   Annual_Premium        381109 non-null  float64
- 9   Policy_Sales_Channel  381109 non-null  float64
- 10  Vintage               381109 non-null  int64  
- 11  Response              381109 non-null  int64
-
-import pandera as pa
-from pandera import Column, DataFrameSchema, Check
-
-# Define schema
-schema = DataFrameSchema({
-    "id": Column(int, nullable=False),
-    "Gender": Column(str, Check.isin(["Male", "Female"]), nullable=False),
-    "Age": Column(int, Check.in_range(0, 120), nullable=False),
-    "Driving_License": Column(int, Check.isin([0, 1]), nullable=False),
-    "Region_Code": Column(float, Check.in_range(0, 120), nullable=False),
-    "Driving_License": Column(int, Check.isin([0, 1]), nullable=False),
-})
-
-#--------- all functionalities
-def validate_dataset(df:pd.DataFrame):
-    try:
-
-"""
-
-#-------- utility functions
-
-
-
 def split_the_data(df:pd.DataFrame, test_size:float):
     try:
         x = df.drop(columns=['Response'])
@@ -51,7 +18,7 @@ def split_the_data(df:pd.DataFrame, test_size:float):
         return train_data, test_data
     
     except Exception as e:
-        logger.error("failed to split the data , ", e)
+        logger.error(f"failed to split the data , {e}")
 
 def save_the_train_test_data(df:pd.DataFrame, dataset_name:str):
     try:
@@ -59,8 +26,9 @@ def save_the_train_test_data(df:pd.DataFrame, dataset_name:str):
         os.makedirs('./data/split', exist_ok=True)
         df.to_csv(f"data/split/{dataset_name}.csv", index=False)
         logger.debug("data save successfull")
+
     except Exception as e:
-        logger.error("failed to save the split data, ", e)
+        logger.error(f"failed to save the split data, {e}")
 
 def main():
     try :
@@ -70,8 +38,9 @@ def main():
         train_data, test_data = split_the_data(df, test_size)
         save_the_train_test_data(train_data, "train_data")
         save_the_train_test_data(test_data, "test_data")
+
     except Exception as e:
-        logger.error("data_preprocesssing failed due to , ", e)
+        logger.error(f"data_preprocesssing failed due to , {e}")
 
 if __name__ == '__main__':
     main()

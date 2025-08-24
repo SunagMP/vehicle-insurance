@@ -40,7 +40,7 @@ def create_features(df:pd.DataFrame):
         return df
 
     except Exception as e:
-        logger.error("failed to create features due to , ", e)
+        logger.error(f"failed to create features due to , {e}")
 
 def save_the_cleaned_data(df:pd.DataFrame, dataset_name:str):
     try:
@@ -50,7 +50,7 @@ def save_the_cleaned_data(df:pd.DataFrame, dataset_name:str):
         df.to_csv(f"data/cleaned/{dataset_name}.csv", index=False)
         
     except Exception as e:
-        logger.error("failed to save the split data, ", e)
+        logger.error(f"failed to save the split data, {e}")
 
 def main():
     try:
@@ -67,7 +67,7 @@ def main():
         logger.debug("test cleaned data is saved")
 
     except Exception as e:
-        logger.error("feature_engineering failed due to, ", e)
+        logger.error(f"feature_engineering failed due to, {e}")
 
 if __name__ == '__main__':
     main()
