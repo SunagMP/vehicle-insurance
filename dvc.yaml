@@ -14,6 +14,8 @@ stages:
     - data/raw
     outs:
     - data/split
+    params:
+    - data_preprocessing.test_size
 
   feature_engineering:
     cmd: python src/feature_engineering.py
@@ -31,3 +33,12 @@ stages:
     outs:
     - models/model.pkl
     - metrics/result.json
+    params:
+    - train_evaluate_model.n_estimators
+    - train_evaluate_model.max_depth
+
+  frontend_api:
+    cmd : uvicorn src.frontend_api:app --reload
+    deps:
+    - models/model.pkl
+    - src/frontend_api.py
