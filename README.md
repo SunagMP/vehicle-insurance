@@ -67,6 +67,7 @@ The ML pipeline is fully modular and defined in `dvc.yaml`.
 ```bash
 git clone https://github.com/your-username/vehicle-insurance-predictor.git
 cd vehicle-insurance-predictor
+```
 
 
 2. **Create Virtual Environment and Install Dependencies**
@@ -74,5 +75,37 @@ cd vehicle-insurance-predictor
 python -m venv venv
 source venv/bin/activate   # On Linux/Mac
 venv\Scripts\activate      # On Windows
-
 pip install -r requirements.txt
+```
+
+3. **Run DVC Pipeline**
+```bash
+dvc repro
+```
+
+4. **Run FastAPI Server**
+```bash
+uvicorn frontend_fastapi:app --reload
+```
+
+
+5. **Access Endpoint**
+```bash
+POST http://127.0.0.1:8000/predict
+```
+
+6. **MLflow Tracking**
+```bash
+mlflow ui
+```
+
+---
+
+## 📝 Logging
+All pipeline components include detailed logs using Python’s logging module for monitoring and debugging.
+---
+
+## 🤝 Contributing
+Contributions are welcome! Feel free to fork the repo, open issues, or submit pull requests.
+---
+
