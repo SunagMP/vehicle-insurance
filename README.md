@@ -102,10 +102,10 @@ mlflow ui
 ---
 
 ## 📝 Logging
-All pipeline components include detailed logs using Python’s logging module for monitoring and debugging.
+- All pipeline components include detailed logs using Python’s logging module for monitoring and debugging
 ---
 
 ## 🤝 Contributing
-Contributions are welcome! Feel free to fork the repo, open issues, or submit pull requests.
+- Contributions are welcome! Feel free to fork the repo, open issues, or submit pull requests.
 ---
 
