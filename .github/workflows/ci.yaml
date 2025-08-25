@@ -1,0 +1,44 @@
+name: CI Pipeline - Vehicle Insurance ML Project
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Setup Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install dvc[all] pytest mlflow fastapi uvicorn
+
+      # 4. Run DVC pipeline (without remote storage, just local checks)
+      - name: Run DVC pipeline
+        run: dvc repro
+
+      # 5. Run unit tests
+      - name: Run tests with pytest
+        run: pytest -v --maxfail=1 --disable-warnings -q
+
+      # 6. Validate FastAPI app can start (smoke test)
+      - name: FastAPI Smoke Test
+        run: |
+          nohup uvicorn src.fastapi_frontend:app --host 0.0.0.0 --port 8000 &
+          sleep 10
+          curl -f http://127.0.0.1:8000/docs
