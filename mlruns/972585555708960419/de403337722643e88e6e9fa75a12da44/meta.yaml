@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/91861/OneDrive/Desktop/COURSES/MLOps/vehicle-insurance/mlruns/972585555708960419/de403337722643e88e6e9fa75a12da44/artifacts
+deleted_time: 1756125609012
+end_time: 1756125406902
+entry_point_name: ''
+experiment_id: '972585555708960419'
+lifecycle_stage: deleted
+run_id: de403337722643e88e6e9fa75a12da44
+run_name: resilient-bird-654
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756125406709
+status: 4
+tags: []
+user_id: '91861'

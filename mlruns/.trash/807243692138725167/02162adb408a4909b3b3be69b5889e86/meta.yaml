@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/91861/OneDrive/Desktop/COURSES/MLOps/vehicle-insurance/mlruns/807243692138725167/02162adb408a4909b3b3be69b5889e86/artifacts
+deleted_time: 1756125000652
+end_time: 1756124195926
+entry_point_name: ''
+experiment_id: '807243692138725167'
+lifecycle_stage: deleted
+run_id: 02162adb408a4909b3b3be69b5889e86
+run_name: burly-ape-408
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756124195812
+status: 3
+tags: []
+user_id: '91861'

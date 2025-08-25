@@ -1,0 +1,15 @@
+artifact_uri: file:C:\Users\91861\OneDrive\Desktop\COURSES\MLOps\vehicle-insurance\mlruns/195565642935678025/f78dd7265d81453c9de9bd3aa18e7132/artifacts
+deleted_time: 1756122840119
+end_time: 1756121961735
+entry_point_name: ''
+experiment_id: '195565642935678025'
+lifecycle_stage: deleted
+run_id: f78dd7265d81453c9de9bd3aa18e7132
+run_name: model_evaluation
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756121911915
+status: 3
+tags: []
+user_id: '91861'

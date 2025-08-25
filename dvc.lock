@@ -29,10 +29,13 @@ stages:
       hash: md5
       md5: 84223c1c087b4ae9bcae8b567b4fecf5
       size: 1690
+    params:
+      params.yaml:
+        data_preprocessing.test_size: 0.2
     outs:
     - path: data/split
       hash: md5
-      md5: e7a8439ad7ff2593f3b3d6b2d74ead99.dir
+      md5: b82f0aad724d0b8488edbf13b62a0b60.dir
       size: 21813609
       nfiles: 2
   feature_engineering:
@@ -40,7 +43,7 @@ stages:
     deps:
     - path: data/split
       hash: md5
-      md5: e7a8439ad7ff2593f3b3d6b2d74ead99.dir
+      md5: b82f0aad724d0b8488edbf13b62a0b60.dir
       size: 21813609
       nfiles: 2
     - path: src/feature_engineering.py
@@ -50,7 +53,7 @@ stages:
     outs:
     - path: data/cleaned
       hash: md5
-      md5: f08bc2d00430ae900dddfb98275592d5.dir
+      md5: d306e60402919028b6de43c8144479cf.dir
       size: 19578064
       nfiles: 2
   train_evaluate_model:
@@ -58,19 +61,34 @@ stages:
     deps:
     - path: data/cleaned
       hash: md5
-      md5: f08bc2d00430ae900dddfb98275592d5.dir
+      md5: d306e60402919028b6de43c8144479cf.dir
       size: 19578064
       nfiles: 2
     - path: src/train_evaluate_model.py
       hash: md5
-      md5: baf89d5c541aaa1dde045ffff3b29820
-      size: 3895
+      md5: da52d741a65507b3d8c2f386f66accd0
+      size: 4488
+    params:
+      params.yaml:
+        train_evaluate_model.max_depth: None
+        train_evaluate_model.n_estimators: 100
     outs:
     - path: metrics/result.json
       hash: md5
-      md5: 89e0678608e6e46303b6ecf6d1040e7f
+      md5: 3250da7453eebf24ff3846ce07c8dc1e
       size: 113
     - path: models/model.pkl
       hash: md5
-      md5: c066e27b06281df78abf4d308ebf80d4
-      size: 684378214
+      md5: 32974e18e6c719c1d6df3e62e10199be
+      size: 636699014
+  frontend_api:
+    cmd: uvicorn src.frontend_api:app --reload
+    deps:
+    - path: models/model.pkl
+      hash: md5
+      md5: cc74714853ce8412e589b15acfbd7175
+      size: 638555974
+    - path: src/frontend_api.py
+      hash: md5
+      md5: d6127c80c0ad7772da15c8cfa38ff15e
+      size: 3691

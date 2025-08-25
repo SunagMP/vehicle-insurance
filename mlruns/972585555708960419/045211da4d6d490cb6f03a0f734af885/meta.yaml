@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/91861/OneDrive/Desktop/COURSES/MLOps/vehicle-insurance/mlruns/972585555708960419/045211da4d6d490cb6f03a0f734af885/artifacts
+deleted_time: 1756125608997
+end_time: 1756125346362
+entry_point_name: ''
+experiment_id: '972585555708960419'
+lifecycle_stage: deleted
+run_id: 045211da4d6d490cb6f03a0f734af885
+run_name: caring-pug-756
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756125346277
+status: 3
+tags: []
+user_id: '91861'

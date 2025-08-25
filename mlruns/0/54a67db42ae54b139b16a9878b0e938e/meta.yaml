@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/54a67db42ae54b139b16a9878b0e938e/artifacts
+deleted_time: 1756124988916
+end_time: 1756123403939
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: 54a67db42ae54b139b16a9878b0e938e
+run_name: adaptable-sow-680
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756123403848
+status: 3
+tags: []
+user_id: '91861'

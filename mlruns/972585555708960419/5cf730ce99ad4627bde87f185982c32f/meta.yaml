@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/91861/OneDrive/Desktop/COURSES/MLOps/vehicle-insurance/mlruns/972585555708960419/5cf730ce99ad4627bde87f185982c32f/artifacts
+end_time: 1756126898131
+entry_point_name: ''
+experiment_id: '972585555708960419'
+lifecycle_stage: active
+run_id: 5cf730ce99ad4627bde87f185982c32f
+run_name: debonair-sheep-735
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756126897963
+status: 3
+tags: []
+user_id: '91861'

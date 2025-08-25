@@ -29,3 +29,8 @@ def load_all_params(component:str):
     with open('params.yaml', 'r') as f:
         all_params = yaml.safe_load(f)
     return all_params[component]
+
+def load_params():
+    with open('params.yaml', 'r') as f:
+        all_params = yaml.safe_load(f)
+    return all_params

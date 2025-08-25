@@ -1,0 +1,15 @@
+artifact_uri: file:C:\Users\91861\OneDrive\Desktop\COURSES\MLOps\vehicle-insurance\mlruns/195565642935678025/0c118564848845bea0fca7931fc61dfc/artifacts
+deleted_time: 1756123417491
+end_time: 1756123026660
+entry_point_name: ''
+experiment_id: '195565642935678025'
+lifecycle_stage: deleted
+run_id: 0c118564848845bea0fca7931fc61dfc
+run_name: salty-pig-884
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756123026464
+status: 3
+tags: []
+user_id: '91861'

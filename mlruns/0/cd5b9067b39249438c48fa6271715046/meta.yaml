@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/cd5b9067b39249438c48fa6271715046/artifacts
+deleted_time: 1756124988900
+end_time: 1756123361430
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: cd5b9067b39249438c48fa6271715046
+run_name: bemused-stoat-541
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756123361328
+status: 4
+tags: []
+user_id: '91861'

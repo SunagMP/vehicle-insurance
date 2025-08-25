@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/2fc457d43c53491ebcde6ad1113b0844/artifacts
+deleted_time: 1756124988909
+end_time: 1756124211079
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: deleted
+run_id: 2fc457d43c53491ebcde6ad1113b0844
+run_name: beautiful-boar-512
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756124210989
+status: 3
+tags: []
+user_id: '91861'

@@ -12,7 +12,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import PowerTransformer
 
-from utils import create_logger, load_all_params
+from utils import create_logger, load_all_params, load_params
 
 #-------- logger instance
 logger = create_logger("train_evaluate_model_logger")
@@ -69,6 +69,8 @@ def load_model():
     except Exception as e:
         logger.error(f"Model load failed, {e}")
 
+import mlflow
+mlflow.set_experiment("vehicle-insurance-experiments")
 def evaluate_model(x_test:pd.DataFrame, y_test:pd.DataFrame):
     try:
         model = load_model()
@@ -87,6 +89,20 @@ def evaluate_model(x_test:pd.DataFrame, y_test:pd.DataFrame):
                 "f1_score": f1
             }, f, indent=4)
         logger.debug("evaluation saved to the files")
+
+        with mlflow.start_run():
+            data_preprocessing_params = load_all_params("data_preprocessing")
+            mlflow.log_params(data_preprocessing_params)
+            train_evaluate_model_params = load_all_params("train_evaluate_model")
+            mlflow.log_params(train_evaluate_model_params)
+            mlflow.log_metrics({
+                'accuracy' : accuracy,
+                'recall' : recall,
+                'f1_score' : f1
+            })
+            # mlflow.sklearn.log_model(sk_model=model, name="rf-model")
+
+        logger.debug("Evaluation logged to MLflow")
     
     except Exception as e:
         logger.error(f"Evaluation failed due to, {e}")
@@ -96,25 +112,22 @@ def main():
         test_params = load_all_params("train_evaluate_model")
         n_estimators = test_params['n_estimators']
         max_depth = test_params['max_depth']
+
         if max_depth == 'None':
             max_depth = None
         pipe = create_model(n_estimators, max_depth)
 
-        print("model-created")
         train_data = pd.read_csv('data/cleaned/train_data.csv')
         x_train = train_data.drop(columns=['Response'])
         y_train = train_data['Response']
         trained_model = train_model(x=x_train, y=y_train, pipe=pipe)
 
-        print("model-trained")
         save_model(trained_model)
 
-        print("model-saved")
         test_data = pd.read_csv('data/cleaned/test_data.csv')
         x_test = test_data.drop(columns=['Response'])
         y_test = test_data['Response']
         evaluate_model(x_test, y_test)
-
 
     except Exception as e:
         logger.error(f"train_evaluate failed due to -> {e}")

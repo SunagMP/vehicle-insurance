@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/91861/OneDrive/Desktop/COURSES/MLOps/vehicle-insurance/mlruns/972585555708960419/0aab7de4ddbf4f5eb637498c0b1ed780/artifacts
+end_time: 1756125955764
+entry_point_name: ''
+experiment_id: '972585555708960419'
+lifecycle_stage: active
+run_id: 0aab7de4ddbf4f5eb637498c0b1ed780
+run_name: adaptable-bear-17
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756125955614
+status: 4
+tags: []
+user_id: '91861'
