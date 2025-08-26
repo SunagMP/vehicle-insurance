@@ -34,7 +34,7 @@ jobs:
           mkdir -p data/raw data/split data/cleaned models metrics
           echo "{}" > metrics/result.json
           echo "fake model" > models/model.pkl
-          
+
       # 5. Run DVC pipeline (skip in CI, rely on mock artifacts)
       - name: Run DVC pipeline
         run: |
@@ -48,7 +48,7 @@ jobs:
       # 7. Validate FastAPI app can start (smoke test)
       - name: FastAPI Smoke Test
         run: |
-          uvicorn src.fastapi_frontend:app --host 0.0.0.0 --port 8000 &
+          uvicorn src._frontend_api:app --host 0.0.0.0 --port 8000 &
           SERVER_PID=$!
           sleep 10
           curl -f http://127.0.0.1:8000/docs || (echo "FastAPI failed to start" && kill $SERVER_PID && exit 1)
