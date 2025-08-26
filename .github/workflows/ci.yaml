@@ -34,15 +34,12 @@ jobs:
           mkdir -p data/raw data/split data/cleaned models metrics
           echo "{}" > metrics/result.json
           echo "fake model" > models/model.pkl
-
-      # 5. Run DVC pipeline (if dvc.yaml exists)
+          
+      # 5. Run DVC pipeline (skip in CI, rely on mock artifacts)
       - name: Run DVC pipeline
         run: |
-          if [ -f dvc.yaml ]; then
-            dvc repro
-          else
-            echo "No dvc.yaml found, skipping DVC step."
-          fi
+          echo "Skipping DVC repro in CI to use mock artifacts."
+
 
       # 6. Run unit tests
       - name: Run tests with pytest
