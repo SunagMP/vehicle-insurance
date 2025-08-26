@@ -36,9 +36,3 @@ stages:
     params:
     - train_evaluate_model.n_estimators
     - train_evaluate_model.max_depth
-
-  frontend_api:
-    cmd : uvicorn src.frontend_api:app --reload
-    deps:
-    - models/model.pkl
-    - src/frontend_api.py
